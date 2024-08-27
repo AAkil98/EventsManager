@@ -1,0 +1,26 @@
+<div class="cover mb-4 d-flex align-items-center justify-content-center">
+  <div class="text-center">
+    <h1>Make your own event</h1>
+  </div>
+</div>
+<div class="container py-5">
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h3 class="mb-0">My Events</h3>
+    <%= link_to "Create your event", new_event_path, class: "btn btn-flat"%>
+  </div>
+  <div class="row">
+    <% @events.each do |event|%>
+      <div class="card-category">
+        <%= event.categroy%>
+        <%= event.description%>
+        <%= event.starting_date%>
+        <%= event.ending_date%>
+      </div>
+      <div class="event-card-actions">
+        <%= link_to "Details", event_path(event)%>
+        <%= link_to "Edit", edit_event_path(event), class:"ms-3 text-warning"%>
+        <%= link_to "Remove", event_path(event), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"ms-3 text-danger"%>
+      </div>
+    <% end %>
+  </div>
+</div>
