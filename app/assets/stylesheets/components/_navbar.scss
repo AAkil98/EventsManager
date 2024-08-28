@@ -1,12 +1,99 @@
+/* Navbar Styles */
 .navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+  display: flex;
+  background: #efebe5;
+  width: 100%;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.link-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-left, .navbar-right {
+  display: flex;
+  align-items: center; /* Aligns items vertically centered */
+}
+
+.navbar-left {
+  margin-right: auto;
+  padding-left: 12px /* Pushes center to the middle */
+}
+
+
+.navbar-right {
+  margin-left: auto;
+  padding-left: 70px;/* Pushes center to the middle */
+}
+
+.navbar-center {
+  display: flex;
+  justify-content: center; /* Centers the logo */
+  flex: 1; /* Takes up remaining space */
+}
+
+.navbar-brand img {
+  width: 160px;
+  background-color: #efebe5;
+}
+
+.nav-item {
+  color: #b68b24;
+  display: flex;
+  align-items: center; /* Aligns items vertically centered */
+  text-emphasis-color: #b68b24;
+}
+
+/* Space between Home and page edge */
+.nav-item.home {
+  margin-left: 20px; /* Space between "Home" and the page edge */
+}
+
+/* Button Styles */
+.btn-login, .btn-signup {
+  display: inline-block;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  color: #ffffff;
+  background-color: #b68b24; /* Button color */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  font-size: 16px;
+  text-align: center;
+  transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition for hover effect */
+  margin-left: 10px; /* Space between buttons */
+}
+
+.btn-login {
+  margin-right: 0; /* Ensure no margin is applied to the left */
+}
+
+.btn-signup {
+  margin-left: 10px; /* Space between "Login" and "Sign Up" */
+  margin-right: 10px; /* Space between "Sign Up" and shop image */
+}
+
+.btn-login:hover, .btn-signup:hover {
+  background-color: #a67c2c; /* Slightly darker color on hover */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Slightly darker shadow on hover */
+}
+
+/* Navbar Toggler Button */
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("path/to/your/toggler-icon.png"); /* Update path to your toggler icon */
+}
+
+.button-image {
+  size: 8px;
+  width: 36px;
+}
+
+.nav-link {
+  text-emphasis-color:#b68b24 ;
 }
