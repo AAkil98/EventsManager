@@ -2,3 +2,10 @@
   <h1><%= @event.category%></h1>
   <p><%= @event.description%></p>
 </div>
+
+
+<h2>Book this <%= @event.category%></h2>
+<%= simple_form_for [@event, @participation] do |f| %>
+  <%= f.input :status%>
+  <%= f.submit class: "btn btn-flat"%>
+<% end %>

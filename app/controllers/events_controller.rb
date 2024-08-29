@@ -1,37 +1,46 @@
 class EventsController < ApplicationController
   before_action :set_event, only:[:show, :edit, :update, :destroy]
   def index
-    @events = Event.all
+    @events = policy_scop(Event)
+  end
+
+  def show
+    authorize @event
+    @participation = Participation.new
+    @participations = @event.participations.where(user: current_user)
   end
 
   def new
     @event = Event.new
-  end
-
-  def show
+    authorize @event
   end
 
   def create
     @event = Event.new(event_params)
+    @event.user = current_user
+    authorize @event
     if @event.save
-      redirect_to event_path(@event)
+      redirect_to events_path
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
+    authorize @event
   end
 
   def update
+    authorize @event
     if @event.update(event_params)
-      redirect_to event_path(@path)
+      redirect_to event_path(@event)
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
+    authorize @event
     @event.destroy
     redirect_to events_path, status: :see_other
   end
@@ -39,7 +48,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:category, :description, :starting_day, :ending_day)
+    params.require(:event).permit(:title, :category, :description, :starting_day, :ending_day)
   end
 
   def set_event
