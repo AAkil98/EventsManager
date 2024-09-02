@@ -4,10 +4,13 @@
       <div class="bg-white rounded p-3 shadow">
         <h3>Create your own event</h3>
         <%= simple_form_for @event do |f|%>
-          <%= f.input :category, placeholder: "Birthday Party"%>
+          <%= f.input :title, placeholder: "Type the title of youe event"%>
+          <%= f.input :category, collection: [["Party", "Party"], ["Visit", "Visit"], ["Entertainment","Entertainment"]], prompt: "Select", input_html: {class: 'form-control'} %>
           <%= f.input :description, placeholder: 'Details'%>
           <%= f.input :starting_day, placeholder: 'dd/mm/yyyy'%>
           <%= f.input :ending_day, placeholder: 'dd/mm/yyyy'%>
+          <%= f.input :mode, collection: [['Public', 'Public'],['Private','Private']], prompt: "Select", input_html: {class: 'form-control'} %>
+          <%= f.input :photo, as: :file%>
           <%= f.submit class: 'btn btn-flat'%>
         <% end %>
       </div>

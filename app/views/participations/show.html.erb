@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Your booking for <%= @participation.event.title%></h1>
+  <p>Status: <%= @participation.status%>
+</div>
+<h2>Book this <%= @event.categroy%></h2>
+<%= simple_form_for [@event, @booking]%>
+  <%= f.input :status%>
+  <%= f.submit%>
+<% end %>
