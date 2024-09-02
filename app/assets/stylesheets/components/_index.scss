@@ -3,3 +3,24 @@
 @import "avatar";
 @import "form_legend_clear";
 @import "navbar";
+
+.adress{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 8px;
+
+}
+
+.date{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 8px;  
+}
+
+.card-img{
+    width: 280px;
+    height: 350px;
+    border-radius: 16px;
+}

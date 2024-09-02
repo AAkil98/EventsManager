@@ -1,12 +1,11 @@
-// Specific CSS for your home-page
 .banner {
     background-size: cover;
     background-position: center;
-    padding: 200px 0 30px 0;
-    height: 75vh;
-  }
+    padding: 30px 0;
+    height: 90vh;
+}
   
-  .banner h1 {
+.banner h1 {
     margin: 0;
     color: white;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
@@ -14,80 +13,160 @@
     letter-spacing: 7px;
     font-weight: bold;
     font-family: $primary-font;
-  }
+}
   
-  .banner p {
+.banner p {
     font-size: 15px;
     color: white;
-    opacity: .7;
+    opacity: 0.7;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
     margin: 0;
-  }
-  .btn-modheel {
-    border : 1px solid #623e2a;
-    padding: 8px 16px;
-    color:#623e2a;
-    background-color: white;
-    box-shadow: 3px 3px 3px white;
-  }
+}
+
+.btn-modheel {
+    border: 1px solid #623e2a;
+    padding: 8px 20px;
+    color: #623e2a;
+    background-color: #c19e5a;
+    box-shadow: 3px 3px 3px #c19e5a
+    (255, 217, 94);
+}
+
+.btn-modheelo {
+    border: 1px solid #623e2a;
+    padding: 8px 20px;
+    color: #623e2a;
+    background-color: #c19e5a;
+    box-shadow: 3px 3px 3px #c19e5a(255, 217, 94);
+}
   
-  .title11 {
-    color: #b68b24 !important;
+.title11 {
+    color: #c19e5a !important;
     padding-bottom: 16px;
     margin-bottom: auto;
-   
-  }
-  .title12 {
-    color: #b68b24 !important;
+    text-align: center;
+}
+
+.title12 {
+    color: #c19e5a !important;
     padding-bottom: 35px;
     margin-bottom: auto;
-   font-family: $primary-font;
-   text-emphasis-color:#b68b24 ;
-  }
-.links{
+    font-family: $primary-font;
+    text-emphasis-color: #0c0b09;
+    text-align: center;
+}
+
+.links {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 108px;
+    margin-top: 180px;
 }
+
 .link {
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    p {
-        text-align: center;
-    }
-    .gold-info{
-        background-color: #bfa05b;
-        color: white;
-        width: 140px;
-        height: 65px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-        margin-top: 30px;
-        box-shadow: 4px 4px 8px rgb(42, 42, 42);
-    
-
-        .info-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin: 0;
-        }
-    }
 }
-.container {
+
+.link p {
     text-align: center;
+}
+
+.info-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
 }
 
 .title1 {
     margin-top: -18px;
-    .welcome{
-        color:rgb(255, 255, 255);
-        font-weight: 500;
-        font-size: 18px;
-        margin-bottom: 48px;
+}
+
+.welcome {
+    color: rgb(255, 255, 255);
+    font-weight: 500;
+    font-size: 25px;
+    margin-bottom: 48px;
+    text-align: center;
+}
+
+.container-bottom {
+    display: flex;
+}
+
+.img-down {
+    height: 500px;
+    width: 480px;
+}
+
+.mcard {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.video-container {
+    height: 90vh;
+    position: relative; /* Added for better positioning */
+    overflow: hidden; /* Ensures content doesn't overflow */
+}
+
+#bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the entire area */
+    z-index: -1; /* Places the video behind the content */
+}
+
+.banner-titles {
+    position: relative; /* Keeps titles above the video */
+    z-index: 1;
+    padding-top: 200px;
+}
+
+.modheel-text {
+    margin-bottom: 0 !important;
+    text-align: justify;
+    padding: 0 150px;
+    color: #623e2a !important;
+}
+
+.img-container{
+    padding: 48px;
+}
+
+
+.card-titre {
+    text-align: left;
+    background-color: #c19e5a !important;
+    padding: 12px 24px;
+    margin: 48px 150px 0 150px;;
+    border: 1px solid #623e2a;
+    border-radius: 10px;
+    box-sizing: 10px;
+    width: 128px;
+    margin-left: 150px !important;
+}
+
+.card-soustitre{
+    padding: 25px 150px;
+    color: #623e2a;
+}
+
+.card-corp{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: start;
+    img{
+        width: 500px;
+        height: 450px;
     }
 }
