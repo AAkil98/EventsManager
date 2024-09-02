@@ -1,6 +1,7 @@
 <div class="card-category card-large">
   <h1><%= @event.category%></h1>
   <p><%= @event.description%></p>
+  <%= cl_image_tag @event.photo.key, height: 300, width: 400, crop: :fill%>
 </div>
 
 

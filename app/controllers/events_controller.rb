@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only:[:show, :edit, :update, :destroy]
   def index
-    @events = policy_scop(Event)
+    @events = policy_scope(Event)
   end
 
   def show
@@ -48,7 +48,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :category, :description, :starting_day, :ending_day)
+    params.require(:event).permit(:title, :category, :description, :starting_day, :ending_day, :photo)
   end
 
   def set_event

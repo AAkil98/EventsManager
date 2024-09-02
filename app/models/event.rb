@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   belongs_to :user
   has_many :participations
+  has_one_attached :photo
 
   validates :category, presence: true
   validates :ending_day, comparison: { greater_than_or_equal_to: :starting_day }
