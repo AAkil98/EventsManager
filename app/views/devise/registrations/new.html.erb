@@ -23,6 +23,11 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <%= f.input :status,
+                as: :radio_buttons,
+                collection: [["Owner", "owner"], ["Client", "client"]],
+                label: "Your Status",
+                required: true %>
   </div>
 
   <div class="form-actions">
