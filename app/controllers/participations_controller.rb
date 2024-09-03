@@ -6,14 +6,15 @@ class ParticipationsController < ApplicationController
     @participation.event = @event
     @participation.user = current_user
     if @participation.save
-      redirect_to events_path
+      redirect_to events_path, notice: "You will ne redirected to payment!"
     else
-      render "events/show"
+      render "events/show", alert: "Something is not working!"
     end
   end
 
   def show
     @participation = Participation.find(params[:id])
+    @event = @participation.event
   end
 
   def destroy
