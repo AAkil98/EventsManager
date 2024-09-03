@@ -1,0 +1,98 @@
+
+.event-card {
+  background: #ffe7a3;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 15px 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .event-photo {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 15px;
+  }
+
+  .event-details {
+    padding: 15px;
+    .event-title {
+      font-family: 'Georgia', serif;
+      font-size: 1.5em;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .event-description {
+      font-size: 1em;
+      color: #666;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .card-date {
+      font-weight: bold;
+      color: #DAA520;
+      display: inline-block;
+      margin-top: 10px;
+    }
+  }
+}
+
+.client-actions {
+  text-align: center;
+  margin-top: 20px;
+
+  .btn-book {
+    background-color: #DAA520;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #b8860b;
+    }
+  }
+}
+
+.owner-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+
+  .btn-edit,
+  .btn-danger {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-edit {
+    background-color: #f0ad4e;
+    color: #ffffff;
+
+    &:hover {
+      background-color: #ec971f;
+    }
+  }
+
+  .btn-delete {
+    background-color: #d9534f;
+    color: #ffffff;
+
+    &:hover {
+      background-color: #c9302c;
+    }
+  }
+}

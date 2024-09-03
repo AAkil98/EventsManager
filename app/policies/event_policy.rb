@@ -7,7 +7,13 @@ class EventPolicy < ApplicationPolicy
   class Scope < ApplicationPolicy::Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      user.admin? ? scope.all : scope.where(mode: "Public")
+      if user.admin?
+        scope.all
+      elsif user.owner?
+        scopre.where(user: user)
+      else
+        scope.where(mode: "Public")
+      end
     end
   end
 
@@ -16,14 +22,14 @@ class EventPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    user.admin? || user.owner?
   end
 
   def update?
-    record.user == user
+    user.owner? && record.user == user
   end
 
   def destroy?
-    record.user == user
+    record.user == user && user.owner?
   end
 end

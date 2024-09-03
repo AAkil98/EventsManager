@@ -1,14 +1,13 @@
-<div class="container">
-  <h1 class="center">Our Events</h1>
-  <h5 class="center">Our available events</h5>
-  <div class="cards">
+<div class="events-container">
+  <h1 class="center">Our available events</h1>
+  <div class="event-cards">
       <% @events.each do |event| %>
       <div class="card-item">
         <div class="card-body">
           <%= cl_image_tag event.photo.key, class: "event-img"%>
           <h2 class="card-title center"><%= event.title %></h2>
+          <h3 class="card-date"> From <%=event.starting_day%> to <%=event.ending_day %></h3>
           <p class="card-text"><%= event.description%></p>
-          <h3 class="card-date "> From <%=event.starting_day%> to <%=event.ending_day %></h3>
           <div class="card-footer center">
             <%= link_to "Details", event_path(event), class:"btn btn-event"%>
           </div>

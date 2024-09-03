@@ -1,27 +1,33 @@
-<div class="card-category card-large">
-  <h1><%= @event.category%></h1>
-  <p><%= @event.description%></p>
-  <%= cl_image_tag @event.photo.key, height: 300, width: 400, crop: :fill%>
-</div>
 
-<h2>Book this <%= @event.category%></h2>
-<%= simple_form_for [@event, @participation] do |f| %>
-  <%= f.input :status%>
-  <%= f.submit class: "btn btn-flat"%>
-<% end %>
-
-
-<div class="event-card">
-  <div class="event-photo">
-    <%=cl_image_tag @event.photo.key, height: 300, width: 400, crop: :fill if @event.photo.attached? %>
+<div class="event-container">
+  <div class="event-card">
+    <div class="event-photo">
+      <%=cl_image_tag @event.photo.key, height: 300, width: 400, crop: :fill if @event.photo.attached? %>
+    </div>
+    <div class="event-details">
+      <h1 class="event-title"><%= @event.title%></h1>
+      <h2 class="event-category"><%= @event.category%></h2>
+      <p class="event-description"><%=@event.description%></p>
+      <p class="event-dates">
+        <span>From: <%= @event.starting_day.strftime("%B %d, %Y") %></span>
+        <span>To: <%= @event.ending_day.strftime("%B %d, %Y") %></span>
+      </p>
+    </div>
   </div>
-  <div class="event-details">
-    <h1 class="event-title"><%= @event.title%></h1>
-    <h2 class="event-category"><%= @event.category%></h2>
-    <p class="event-description"><%=@event.description%></p>
-    <p class="event-dates">
-      <span>From: <%= @event.starting_day.strftime("%B %d, %Y") %></span>
-      <span>To: <%= @event.ending_day.strftime("%B %d, %Y") %></span>
-    </p>
-  </div>
+  <% if current_user.client?%>
+    <div class="client-actions">
+      <%= simple_form_for [@event, @participation] do |f|%>
+        <%= f.hidden_field :user_id, value: current_user.id%>
+        <%= f.hidden_field :event_id, value: @event.id%>
+        <% f.submit "Book Event", class: "btn btn-book"%>
+      <%end%>
+    </div>
+  <%end%>
+
+  <%if current_user.owner? && current_user == @event.user %>
+    <div class="owner-actions">
+      <%= link_to 'Edit Event', edit_event_path(@event), class: 'btn btn-edit'%>
+      <%= link_to 'Delete Event', @event, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger"%>
+    </div>
+  <%end%>
 </div>

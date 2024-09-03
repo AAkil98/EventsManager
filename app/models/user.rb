@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   has_many :events
   has_many :participations
-  validates :status, presence: true, inclusion: {in: ["Owner", "Client"]}
+  validates :status, presence: true, inclusion: {in: ["owner", "client"]}
 end
