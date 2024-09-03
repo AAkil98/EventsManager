@@ -10,7 +10,7 @@ class EventPolicy < ApplicationPolicy
       user.admin? ? scope.all : scope.where(mode: "Public")
     end
   end
-  
+
   def show?
     true
   end

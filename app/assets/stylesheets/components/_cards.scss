@@ -113,3 +113,56 @@
     }
   }
 }
+
+.participation-card {
+  background: #f0f2f5;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 700px;
+  margin: 20px auto;
+
+  .event-info {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+
+    .event-title {
+      font-size: 1.2em;
+      color: #6c757d;
+      margin-bottom: 10px;
+    }
+
+    .event-description {
+      font-size: 1em;
+      color: #495057;
+      margin-bottom: 15px;
+    }
+
+    .event-dates {
+      font-size: 0.9em;
+      color: #868e96;
+      span {
+        display: block;
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  .participation-details {
+    background: #e9ecef;
+    padding: 15px;
+    border-radius: 8px;
+
+    h2 {
+      font-size:1.5em;
+      color: #343a40;
+      margin-bottom: 10px;
+    }
+    .participation-info {
+      font-size: 1em;
+      color: #495057;
+    }
+  }
+}

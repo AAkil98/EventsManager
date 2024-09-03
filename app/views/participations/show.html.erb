@@ -1,9 +1,16 @@
-<div class="container">
-  <h1>Your booking for <%= @participation.event.title%></h1>
-  <p>Status: <%= @participation.status%>
+<div class="participation-card">
+  <div class="event-info">
+    <h1 class="event-title"><%=@event.title %></h1>
+    <p class="event-category"><%=@event.category %></p>
+    <p class="event-description"><%=@event.description %></p>
+    <p class="event-dates">
+      <span>From: <%=@event.starting_day.strftime("%B %d, %Y") %></span>
+      <span>To: <%=@event.ending_day.strftime("%B %d, %Y") %></span>
+    </p>
+  </div>
 </div>
-<h2>Book this <%= @event.categroy%></h2>
-<%= simple_form_for [@event, @booking]%>
-  <%= f.input :status%>
-  <%= f.submit%>
-<% end %>
+
+<div class="participation-details">
+  <h2>Your Booking Details</h2>
+  <p class="participation-info"><%= @participation.status%></p>
+</div>
