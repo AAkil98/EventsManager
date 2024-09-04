@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   before_action :set_event, only:[:show, :edit, :update, :destroy]
   def index
     @events = policy_scope(Event)
+    @participation = Participation.new
   end
 
   def show
@@ -35,7 +36,7 @@ class EventsController < ApplicationController
     if @event.update(event_params)
       redirect_to event_path(@event)
     else
-      render :new, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -48,10 +49,13 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :category, :description, :starting_day, :ending_day, :photo, :mode)
+    params.require(:event).permit(:title, :category, :description, :capacity, :starting_day, :ending_day, :mode, :photo)
   end
 
   def set_event
     @event = Event.find(params[:id])
+
+  rescue ActiveRecord::RecordNotFound
+    redirect_to events_path, alert: "Event not found"
   end
 end

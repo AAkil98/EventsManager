@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-  resources :events
   devise_for :users
   resources :events do
-    resources :participations, only: [:create]
+    resources :participations, only: [:create, :destroy, :show]
   end
-  resources :participations, only: [:show]
   root to: "pages#home"
   get "services", to: "services#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

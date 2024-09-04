@@ -10,7 +10,7 @@ class EventPolicy < ApplicationPolicy
       if user.admin?
         scope.all
       elsif user.owner?
-        scopre.where(user: user)
+        scope.where(user: user) && scope.where(mode: "Public")
       else
         scope.where(mode: "Public")
       end
@@ -26,10 +26,10 @@ class EventPolicy < ApplicationPolicy
   end
 
   def update?
-    user.owner? && record.user == user
+    (user.owner? record.user == user) || user.admin?
   end
 
   def destroy?
-    record.user == user && user.owner?
+    (user.owner? record.user == user) || user.admin?
   end
 end

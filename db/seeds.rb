@@ -8,9 +8,26 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+#admin
+User.create!(
+  email: 'admin@example.com',
+  password: 'password',
+  full_name: 'Admin User',
+  admin: true,
+  status: nil
+)
+
 # Owner
 User.create!(
   email: 'owner@example.com',
+  password: 'password',
+  full_name: 'Owner User',
+  admin: false,
+  status: 'owner'
+)
+
+User.create!(
+  email: 'owner2@example.com',
   password: 'password',
   full_name: 'Owner User',
   admin: false,
@@ -27,5 +44,3 @@ User.create!(
     status: 'client'
   )
 end
-
-

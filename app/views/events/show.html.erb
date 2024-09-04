@@ -13,21 +13,21 @@
         <span>To: <%= @event.ending_day.strftime("%B %d, %Y") %></span>
       </p>
     </div>
-  </div>
-  <% if current_user.client?%>
-    <div class="client-actions">
-      <%= simple_form_for [@event, @participation] do |f|%>
-        <%= f.hidden_field :user_id, value: current_user.id%>
-        <%= f.hidden_field :event_id, value: @event.id%>
-        <% f.submit "Book Event", class: "btn btn-book"%>
-      <%end%>
+    <% if current_user.client?%>
+      <div class="client-actions">
+        <%= simple_form_for [@event, @participation] do |f|%>
+          <%= f.hidden_field :user_id, value: current_user.id%>
+          <%= f.hidden_field :event_id, value: @event.id%>
+          <%= f.submit "Book Event", class: "btn btn-book"%>
+        <%end%>
     </div>
-  <%end%>
+    <%end%>
 
-  <%if current_user.owner? && current_user == @event.user %>
-    <div class="owner-actions">
-      <%= link_to 'Edit Event', edit_event_path(@event), class: 'btn btn-edit'%>
-      <%= link_to 'Delete Event', @event, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger"%>
-    </div>
-  <%end%>
+    <%if current_user.owner? && current_user == @event.user %>
+      <div class="owner-actions">
+        <%= link_to 'Edit Event', edit_event_path(@event), class: 'btn btn-edit'%>
+        <%= link_to 'Delete Event', @event, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger"%>
+      </div>
+    <%end%>
+  </div>
 </div>
