@@ -1,19 +1,150 @@
-<div class="container">
-  <h1 class="center">Our Events</h1>
-  <h5 class="center">Our available events</h5>
-  <div class="cards">
-      <% @events.each do |event| %>
-      <div class="card-item">
-        <div class="card-body">
-          <%= cl_image_tag event.photo.key, class: "event-img"%>
-          <h2 class="card-title center"><%= event.title %></h2>
-          <p class="card-text"><%= event.description%></p>
-          <h3 class="card-date "> From <%=event.starting_day%> to <%=event.ending_day %></h3>
-          <div class="card-footer center">
-            <%= link_to "Details", event_path(event), class:"btn btn-event"%>
+<div class="events-container">
+  <h1 class="center">Our available events</h1>
+
+  <!-- Admin Page -->
+  <% if current_user %>
+    <% if current_user.admin? %>
+      <!-- Public Events -->
+      <h2 class="section-title">Public Events</h2>
+      <div class="event-cards">
+        <% @events.where(mode: "Public").each do |event| %>
+          <div class="card-item">
+            <div class="card-body">
+              <%= cl_image_tag event.photo.key, class: "event-img" %>
+              <h2 class="card-title center"><%= event.title %></h2>
+              <p class="event-dates">
+                <span>From: <%= event.starting_day.strftime("%B %d, %Y") %></span>
+                <span>To: <%= event.ending_day.strftime("%B %d, %Y") %></span>
+              </p>
+              <p class="card-text"><%= event.description %></p>
+              <div class="card-footer center">
+                <%= link_to "Details", event_path(event), class: "btn btn-event" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- Private Events -->
+      <h2 class="section-title">Private Events</h2>
+      <div class="event-cards">
+        <% @events.where(mode: "Private").each do |event| %>
+          <div class="card-item">
+            <div class="card-body">
+              <%= cl_image_tag event.photo.key, class: "event-img" %>
+              <h2 class="card-title center"><%= event.title %></h2>
+              <p class="event-dates">
+                <span>From: <%= event.starting_day.strftime("%B %d, %Y") %></span>
+                <span>To: <%= event.ending_day.strftime("%B %d, %Y") %></span>
+              </p>
+              <p class="card-text"><%= event.description %></p>
+              <div class="card-footer center">
+                <%= link_to "Details", event_path(event), class: "btn btn-event" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+    <!-- Owner Page -->
+    <% elsif current_user.owner? %>
+      <!-- Public Events -->
+      <h2 class="section-title">Public Events</h2>
+      <div class="event-cards">
+        <% @events.where(mode: "Public").each do |event| %>
+          <div class="card-item">
+            <div class="card-body">
+              <%= cl_image_tag event.photo.key, class: "event-img" %>
+              <h2 class="card-title center"><%= event.title %></h2>
+              <p class="event-dates">
+                <span>From: <%= event.starting_day.strftime("%B %d, %Y") %></span>
+                <span>To: <%= event.ending_day.strftime("%B %d, %Y") %></span>
+              </p>
+              <p class="card-text"><%= event.description %></p>
+              <div class="card-footer center">
+                <%= link_to "Details", event_path(event), class: "btn btn-event" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- Private Events Created by the Owner -->
+      <h2 class="section-title">Your Private Events</h2>
+      <div class="event-cards">
+        <% @events.where(mode: "Private", user_id: current_user.id).each do |event| %>
+          <div class="card-item">
+            <div class="card-body">
+              <%= cl_image_tag event.photo.key, class: "event-img" %>
+              <h2 class="card-title"><%= event.title %></h2>
+              <p class="event-dates">
+                <span>From: <%= event.starting_day.strftime("%B %d, %Y") %></span>
+                <span>To: <%= event.ending_day.strftime("%B %d, %Y") %></span>
+              </p>
+              <p class="card-text"><%= event.description %></p>
+              <div class="card-footer center">
+                <%= link_to "Details", event_path(event), class: "btn btn-event" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+    <!-- Client Page -->
+    <% elsif current_user.client? %>
+    <h2 class="section-title">Public Events</h2>
+    <div class="event-cards">
+      <% @events.where(mode: "Public").each do |event| %>
+        <div class="card-item">
+          <div class="card-body">
+            <%= cl_image_tag event.photo.key, class: "event-img" %>
+            <h2 class="card-title center"><%= event.title %></h2>
+            <p class="event-dates">
+              <span>From: <%= event.starting_day.strftime("%B %d, %Y") %></span>
+              <span>To: <%= event.ending_day.strftime("%B %d, %Y") %></span>
+            </p>
+            <p class="card-text"><%= event.description %></p>
+            <% if event.participations.count < event.capacity %>
+              <div class="card-footer center">
+                <%= link_to "Details", event_path(event), class: "btn btn-event" %>
+                <%= simple_form_for [event, @participation] do |f| %>
+                  <%= f.hidden_field :user_id, value: current_user.id %>
+                  <%= f.submit "Book", class: "btn btn-book" %>
+                <% end %>
+              </div>
+            <% else %>
+              <h4 class="red-text"><%= event.status %></h4>
+            <% end %>
           </div>
         </div>
-      </div>
+      <% end %>
+    </div>
     <% end %>
-  </div>
+
+  <!-- Visitor's page -->
+  <% else %>
+    <h2 class="section-title">Public Events</h2>
+    <div class="event-cards">
+      <% @events.where(mode: "Public").each do |event| %>
+        <div class="card-item">
+          <div class="card-body">
+            <%= cl_image_tag event.photo.key, class: "event-img" %>
+            <h2 class="card-title center"><%= event.title %></h2>
+            <p class="event-dates">
+              <span>From: <%= event.starting_day.strftime("%B %d, %Y") %></span>
+              <span>To: <%= event.ending_day.strftime("%B %d, %Y") %></span>
+            </p>
+            <p class="card-text"><%= event.description %></p>
+            <% if event.participations.count < event.capacity %>
+              <div class="card-footer center">
+                <%= link_to "Details", event_path(event), class: "btn btn-event" %>
+              </div>
+            <% else %>
+              <h4 class="red-text"><%= event.status %></h4>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>

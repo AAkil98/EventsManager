@@ -1,18 +1,28 @@
 class ParticipationsController < ApplicationController
-
+  include Pundit
   def create
     @event = Event.find(params[:event_id])
-    @participation = Participation.new(participation_params)
-    @participation.event = @event
-    @participation.user = current_user
-    if @participation.save
-      redirect_to events_path, notice: "You will ne redirected to payment!"
+    if @event.participations.count < @event.capacity
+      @participation = @event.participations.new(user: current_user)
+
+
+      if @participation.save
+        @participation.update(status:"booked!")
+        redirect_to @event, notice: "You are a particpant in #{@event.title}"
+      else
+        redirect_to @event, alert: 'Unable to participate in the event. Please try again'
+      end
     else
-      render "events/show", alert: "Something is not working!"
+      redirect_to @event, alert: 'Sorry, this event is fully booked'
     end
   end
 
   def show
+    if current_user.admin? || current_user == @event.user
+      @participants = @event.participants
+    else
+      redirect_to root_path, alert: "unauthorized access"
+    end
     @participation = Participation.find(params[:id])
     @event = @participation.event
   end
@@ -22,9 +32,5 @@ class ParticipationsController < ApplicationController
     redirect_to events_path, status: :see_other
   end
 
-  private
 
-  def participation_params
-    params.require(:participation).permit(:status)
-  end
 end
