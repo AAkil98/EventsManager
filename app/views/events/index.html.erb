@@ -2,7 +2,7 @@
   <h1 class="center">Our available events</h1>
 
   <!-- Admin Page -->
-  <% if session[:user_id] %>
+  <% if current_user %>
     <% if current_user.admin? %>
       <!-- Public Events -->
       <h2 class="section-title">Public Events</h2>
