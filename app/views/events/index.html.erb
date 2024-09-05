@@ -138,6 +138,7 @@
             <% if event.participations.count < event.capacity %>
               <div class="card-footer center">
                 <%= link_to "Details", event_path(event), class: "btn btn-event" %>
+                <%= link_to "Sign up to book", new_user_registration_path , class: "btn btn-event" %>
               </div>
             <% else %>
               <h4 class="red-text"><%= event.status %></h4>

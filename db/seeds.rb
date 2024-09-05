@@ -44,3 +44,32 @@ User.create!(
     status: 'client'
   )
 end
+
+5.times do |i|
+  Event.create!(
+    title: "Exciting Event #{i + 1}",
+    category: ["Festival", "Sports", "Entertainment", "Party", "Conference"].sample,
+    starting_day: Date.today + i.days,
+    ending_day: Date.today + (i + 2).days,
+    description: "Join us for Event #{i + 1}, a great experience of fun and enjoyment!",
+    mode: "Public",
+    capacity: rand(20..100),
+    user: User.find_by(email: 'owner@example.com'),
+    photo: File.open(Rails.root.join('app/assets/images/logo.png'))
+  )
+end
+
+# Create Events by Second Owner
+5.times do |i|
+  Event.create!(
+    title: "Amazing Event #{i + 6}",
+    category: ["Concert", "Conference", "Entertainment", "Party", "Festival"].sample,
+    starting_day: Date.today + (i + 1).days,
+    ending_day: Date.today + (i + 3).days,
+    description: "Don't miss out on Event #{i + 6}, a once-in-a-lifetime experience!",
+    mode: "Public",
+    capacity: rand(15..120),
+    user: User.find_by(email: 'owner2@example.com'),
+    photo: File.open(Rails.root.join('app/assets/images/logo.png'))
+  )
+end
