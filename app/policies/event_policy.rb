@@ -7,7 +7,9 @@ class EventPolicy < ApplicationPolicy
   class Scope < ApplicationPolicy::Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      if user.admin?
+      if user.nil?
+        scope.where(mode: "Public")
+      elsif user.admin?
         scope.all
       elsif user.owner?
         (scope.where(user: user)).or(scope.where(mode: "Public"))

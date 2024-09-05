@@ -1,5 +1,5 @@
 class ParticipationsController < ApplicationController
-
+  include Pundit
   def create
     @event = Event.find(params[:event_id])
     if @event.participations.count < @event.capacity
