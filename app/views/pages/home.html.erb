@@ -1,42 +1,61 @@
-<div class="banner" style="background-image: url(<%=>);">
-  <div class="container">
-  <div class="title1">
-  	<p class="welcome">WELCOME TO</p>
-    <h1 class="title11">MODHEEL EVENT MANAGEMENT</h1>
-	<h2 class="title12">Where Memories Begin</h2>
-	</div>
-	<div class="links">
-		<div class="link">
-			<a class="btn-modheel" href="/services">Our services</a>
-			<div class="gold-info">
-				<p class="info-title"><b>Our Events</b></p>
-        <%= link_to "Our Events", events_path, class: "btn btn-link" >
-			</div>
-		</div>
-		<div class="link">
-			<div class="gold-info">
-				<p class="info-title"><b>contact us</b></p>
 
-			</div>
-		</div>
-		<div class="link">
-			<a class="btn-modheel" href="/events">Our events</a>
-			<div class="gold-info">
-			<p class="info-title"><b>Our Services</b></p>
-		</div>
+
+<!-- home page for the users -->
+<% if current_user %>
+  <!-- home page for the admin -->
+  <% if current_user.admin?%>
+
+  <!-- homepage for the owners -->
+  <% elsif current_user.owner? %>
+    <div class="owner-home-section">
+      <%= link_to 'Create an Event', new_event_path, class: "btn btn-primary"%>
+    </div>
+  <!-- homepage for the clients -->
+  <% elsif current_user.client? %>
+    <%= link_to 'Find an event to book', events_path, class: "btn btn-primary"%>
+  <% end %>
+
+<!-- homepage for the visitors -->
+
+<% else %>
+  <div class="video-container">
+    <video autoplay muted loop id="bg-video">
+        <source src="<%= asset_path('bg-video.mp4') %>" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="banner-titles">
+        <div class="title1">
+            <p class="welcome">WELCOME TO</p>
+            <h1 class="title11">MODHEEL EVENT MANAGEMENT</h1>
+            <h2 class="title12">Where Memories Begin</h2>
+        </div>
+        <div class="links">
+            <div class="link">
+                <a class="btn-modheel" href="/services">Book Our Services</a>
+            </div>
+            <div class="link">
+                <a class="btn-modheelo" href="/contact">Contact Us</a>
+            </div>
+            <div class="link">
+                <a class="btn-modheel" href="/events">Book Our Events</a>
+                <%= link_to 'Find an event to book', events_path, class: "btn btn-primary"%>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="banner">
+  <div class="card-corp">
+			<div class="card-titres">
+        <p class="card-titre">About Us</p>
+        <h2 class="card-soustitre">Who We Are</h2>
+        <p class="modheel-text"> With 15 years of experience in Event Management across France, Tunisia, and Algeria under the name Orients Events, Modheel brings unparalleled expertise to Dubai. We specialize in handling every aspect of your event, from planning and innovative marketing strategies to flawless execution. We are dedicated to transforming your vision into reality, whether it’s a gathering, wedding, birthday celebration, or holiday party. </p>
+      </div>
+			<div class="img-container">
+				<%= image_tag "Secimg.jpeg"%>
+	    </div>
 	</div>
 </div>
-<div class="banner" style="();">
-	<div class="container">
-		<div class="card">
-			<div class="card-body">
-				<h1 class="card-title">About Us</h1>
-				<h2 class="card-subtitle">Who we are</h2>
-				<p class="card-text">With 15 years of experience in Event Management across France, Tunisia, and Algeria under the name Orients Events, Modheel brings unparalleled expertise to Dubai. We specialize in handling every aspect of your event, from planning and innovative marketing strategies to flawless execution. We is dedicated to transforming your vision into reality, whether it’s a gathering, wedding, birthday celebration, or holiday party.
-				</p>
-			</div>
-		</div>
-		<img src="" class="container-img" alt="who we are">
-	</div>
-</div>
-<div class="banner" style="();">
+
+
+<%end%>
