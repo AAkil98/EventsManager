@@ -4,11 +4,33 @@
 <% if current_user %>
   <!-- home page for the admin -->
   <% if current_user.admin?%>
-
+    <div class="admin-home-section">
+      <div class="admin-home-item">
+        <div class="admin-home-body">
+          <h2 class="section-title">Admin Dashboard</h2>
+          <p class="card-text">Manage Events and Users </p>
+          <div class="admin-home-footer">
+            <%= link_to 'View All Events', events_path, class: "btn btn-primary"%>
+            <%= link_to "View All Users", users_path, class: 'btn btn-primary'%>
+            <%= link_to 'Create an Event', new_event_path, class: "btn btn-primary"%>
+            <%= link_to 'Update an existing Event', events_path, class: "btn btn-primary"%>
+          </div>
+        </div>
+      </div>
+    </div>
   <!-- homepage for the owners -->
   <% elsif current_user.owner? %>
     <div class="owner-home-section">
-      <%= link_to 'Create an Event', new_event_path, class: "btn btn-primary"%>
+      <div class="owner-home-item">
+        <div class="owner-home-body">
+          <h2 class="section-title">Manage Your Events</h2>
+          <p class="card-text">Create new events or update existing ones</p>
+          <div class="owner-home-footer">
+            <%= link_to 'Create an Event', new_event_path, class: "btn btn-primary"%>
+            <%= link_to 'Update an existing Event', events_path, class: "btn btn-primary"%>
+          </div>
+        </div>
+      </div>
     </div>
   <!-- homepage for the clients -->
   <% elsif current_user.client? %>
@@ -20,7 +42,6 @@
 <% else %>
   <div class="video-container">
     <video autoplay muted loop id="bg-video">
-        <source src="<%= asset_path('bg-video.mp4') %>" type="video/mp4">
         Your browser does not support the video tag.
     </video>
     <div class="banner-titles">
@@ -51,9 +72,6 @@
         <h2 class="card-soustitre">Who We Are</h2>
         <p class="modheel-text"> With 15 years of experience in Event Management across France, Tunisia, and Algeria under the name Orients Events, Modheel brings unparalleled expertise to Dubai. We specialize in handling every aspect of your event, from planning and innovative marketing strategies to flawless execution. We are dedicated to transforming your vision into reality, whether it’s a gathering, wedding, birthday celebration, or holiday party. </p>
       </div>
-			<div class="img-container">
-				<%= image_tag "Secimg.jpeg"%>
-	    </div>
 	</div>
 </div>
 
