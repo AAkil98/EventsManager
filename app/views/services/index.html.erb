@@ -1,0 +1,25 @@
+<div class="services" style="background-image:url(<%= asset_path "bgig.png" %>)">
+  <h2 class="services-title">Our Services</h2>
+  <p class="services-description">
+    At Modheel Events, we offer a comprehensive suite of event management services tailored to meet the unique needs of our clients. Our services include event planning and coordination, creative decor and theme design, top-notch catering and beverage services, professional photography and videography, and seamless logistics and on-site management. We also provide entertainment booking, design and print services for promotional materials, and detailed post-event evaluation and feedback. Whether you're hosting a corporate event, wedding parties, baby shower, birthday celebration, or any special occasion, Modheel is here for you.
+  </p>
+
+  <div class="services-container">
+    <% @services.each do |service| %>
+       
+        <div class="service-item">
+            <a href="<%= service_path(service)%>">
+                <%= image_tag service.image_url, alt: "Night Clubs" %>
+            </a>
+            <p class="card-title"> <%= service.title %> </p>
+            <p class="service-info">
+                <%= service.description%>
+            </p>
+            <a class="link" href="<%= service_path(service)%>">Learn more    </a>
+        </div>
+    
+    <% end %>
+
+  </div>
+
+</div>
