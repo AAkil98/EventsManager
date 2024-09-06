@@ -3,6 +3,7 @@
   display: flex;
   background: #efebe5;
   width: 100%;
+  border-bottom: 4px solid #C19E5A;
 }
 
 .link-container {
@@ -96,4 +97,9 @@
 
 .nav-link {
   text-emphasis-color:#b68b24 ;
+}
+
+.panier-img {
+  width: 50px;
+  padding-right: 10px;
 }
