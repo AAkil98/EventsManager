@@ -1,6 +1,4 @@
 <div class="events-container">
-  <h1 class="center">Our available events</h1>
-
   <!-- Admin Page -->
   <% if current_user %>
     <% if current_user.admin? %>
@@ -16,7 +14,6 @@
                 <span>From: <%= event.starting_day.strftime("%B %d, %Y") %></span>
                 <span>To: <%= event.ending_day.strftime("%B %d, %Y") %></span>
               </p>
-              <p class="card-text"><%= event.description %></p>
               <div class="card-footer center">
                 <%= link_to "Details", event_path(event), class: "btn btn-event" %>
               </div>
@@ -37,7 +34,6 @@
                 <span>From: <%= event.starting_day.strftime("%B %d, %Y") %></span>
                 <span>To: <%= event.ending_day.strftime("%B %d, %Y") %></span>
               </p>
-              <p class="card-text"><%= event.description %></p>
               <div class="card-footer center">
                 <%= link_to "Details", event_path(event), class: "btn btn-event" %>
               </div>
@@ -49,9 +45,9 @@
     <!-- Owner Page -->
     <% elsif current_user.owner? %>
       <!-- Public Events -->
-      <h2 class="section-title">Public Events</h2>
+      <%= link_to "Back to dashboard", root_path, class: "btn btn-primary"%>
       <div class="event-cards">
-        <% @events.where(mode: "Public").each do |event| %>
+        <% @events.where(mode: "Public", user_id: current_user.id).each do |event| %>
           <div class="card-item">
             <div class="card-body">
               <%= cl_image_tag event.photo.key, class: "event-img" %>
@@ -60,17 +56,16 @@
                 <span>From: <%= event.starting_day.strftime("%B %d, %Y") %></span>
                 <span>To: <%= event.ending_day.strftime("%B %d, %Y") %></span>
               </p>
-              <p class="card-text"><%= event.description %></p>
               <div class="card-footer center">
-                <%= link_to "Details", event_path(event), class: "btn btn-event" %>
+                <%= link_to "Details of your event", event_path(event), class: "btn btn-event" %>
               </div>
+              <h5 class="public-text">🌍Public</h5>
             </div>
           </div>
         <% end %>
       </div>
 
       <!-- Private Events Created by the Owner -->
-      <h2 class="section-title">Your Private Events</h2>
       <div class="event-cards">
         <% @events.where(mode: "Private", user_id: current_user.id).each do |event| %>
           <div class="card-item">
@@ -81,10 +76,10 @@
                 <span>From: <%= event.starting_day.strftime("%B %d, %Y") %></span>
                 <span>To: <%= event.ending_day.strftime("%B %d, %Y") %></span>
               </p>
-              <p class="card-text"><%= event.description %></p>
               <div class="card-footer center">
-                <%= link_to "Details", event_path(event), class: "btn btn-event" %>
+                <%= link_to "Details of your event", event_path(event), class: "btn btn-event" %>
               </div>
+              <h5 class="private-text">🗝️ Private</h5>
             </div>
           </div>
         <% end %>
@@ -92,7 +87,6 @@
 
     <!-- Client Page -->
     <% elsif current_user.client? %>
-    <h2 class="section-title">Public Events</h2>
     <div class="event-cards">
       <% @events.where(mode: "Public").each do |event| %>
         <div class="card-item">
@@ -103,7 +97,6 @@
               <span>From: <%= event.starting_day.strftime("%B %d, %Y") %></span>
               <span>To: <%= event.ending_day.strftime("%B %d, %Y") %></span>
             </p>
-            <p class="card-text"><%= event.description %></p>
             <% if event.participations.count < event.capacity %>
               <div class="card-footer center">
                 <%= link_to "Details", event_path(event), class: "btn btn-event" %>
@@ -134,11 +127,10 @@
               <span>From: <%= event.starting_day.strftime("%B %d, %Y") %></span>
               <span>To: <%= event.ending_day.strftime("%B %d, %Y") %></span>
             </p>
-            <p class="card-text"><%= event.description %></p>
             <% if event.participations.count < event.capacity %>
               <div class="card-footer center">
-                <%= link_to "Details", event_path(event), class: "btn btn-event" %>
-                <%= link_to "Sign up to book", new_user_registration_path , class: "btn btn-event" %>
+                <%= link_to "Sign up to learn more", new_user_registration_path , class: "btn btn-primary" %>
+                <%= link_to "log-in to book", new_user_session_path , class: "btn btn-primary" %>
               </div>
             <% else %>
               <h4 class="red-text"><%= event.status %></h4>

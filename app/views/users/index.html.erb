@@ -1,0 +1,25 @@
+<h1 class="page-title">All Users</h1>
+
+<div class="users-container">
+  <% @users.where(status: 'owner').each do |user| %>
+    <div class="user-card">
+      <div class="user-info">
+        <h2 class="user-email"><%= user.email %></h2>
+        <h3 class="user-name">Events created by <%= user.full_name %></h3>
+      </div>
+      <div class="user-events">
+        <% if user.events.any? %>
+          <ul class="event-list">
+            <% @user_events[user.id].each do |event| %>
+              <li>
+                <%= link_to event.title, event_path(event), class: 'event-link' %>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p class="no-events">No events created by this owner</p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
