@@ -1,0 +1,71 @@
+.page-title {
+  text-align: center;
+  margin-bottom: 2em;
+  font-size: 2em;
+  color: #333;
+}
+
+.users-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5em;
+}
+
+.user-card {
+  background: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1em;
+  width: 300px;
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-info {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.user-email {
+  font-size: 1.2em;
+  color: #333;
+  margin: 0;
+}
+
+.user-name {
+  font-size: 1em;
+  color: #555;
+  margin: 0;
+}
+
+.user-events {
+  width: 100%;
+}
+
+.event-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    margin-bottom: 0.5em;
+  }
+}
+
+.event-link {
+  color: #007bff;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.no-events {
+  text-align: center;
+  color: #777;
+  font-style: italic;
+}

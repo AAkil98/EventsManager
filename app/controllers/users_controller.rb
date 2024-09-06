@@ -4,6 +4,11 @@ class UsersController < ApplicationController
 
   def index
     @users = policy_scope(User)
+    @user_events = {}
+
+    @users.each do |user|
+      @user_events[user.id] = user.events
+    end
   end
 
   private

@@ -1,5 +1,4 @@
 class ParticipationsController < ApplicationController
-  include Pundit
   def create
     @event = Event.find(params[:event_id])
     if @event.participations.count < @event.capacity
@@ -31,6 +30,4 @@ class ParticipationsController < ApplicationController
     @participation.destroy
     redirect_to events_path, status: :see_other
   end
-
-
 end
