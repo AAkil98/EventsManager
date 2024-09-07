@@ -1,7 +1,7 @@
 <div class="main-service-container">
   <h1 class="service-title">Your <%= @service.title %></h1>
   <div class="service-container">
-<div class="service-card" style="background-image:url(<%= asset_path "bgig.png" %>)">
+    <div class="service-card" style="background-image:url(<%= asset_path "bgig.png" %>)">
       <div>
         <form action="/submit-wedding-details" method="POST" class="wedding-form">
           <!-- Date & Time Field -->
@@ -68,5 +68,6 @@
 </div>
 
   <!-- Social & Contact Section -->
- <%= render "shared/footer" %>
+
 </div>
+ <%= render "shared/footer" %>

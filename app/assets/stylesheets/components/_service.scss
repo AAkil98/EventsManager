@@ -8,15 +8,21 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-.service-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 24px;
-  padding: 2rem;
-  background-color: #F7ECE1;
+.Contact-Us {
+  font-family: "YAFdJqkJIt4 0", _fb_, auto;
+  font-size: 13.3335px;
+  width: 150px;
+  color: rgb(98, 62, 42);
+  line-height: 20px;
+  letter-spacing: 0.225em;
+  text-transform: uppercase;
+  list-style-type: none;
+  border: #C09C4A;
+  background-color: #C09C4A;
+  border-radius: 10px;
+  text-decoration: underline;
 }
+
 .service-card {
   width: 400px;
   height: 1100px;
@@ -37,6 +43,7 @@
 .wedding-form {
   display: flex;
   flex-direction: column;
+  justify-content: start;
   gap: 1.5rem;
   background-color: #f7ece118;
   padding: 1.5rem;
@@ -51,14 +58,17 @@ select,
 input[type="number"],
 input[type="datetime-local"],
 textarea {
-  width: 100%;
+  width: 80%;
   padding: 0.75rem;
-  font-size: 1rem;
+  font-size: 0.8rem;
   border: 1px solid black;
   border-radius: 5px;
   background-color: #C09C4A;
   color: #5E5144;
   border: 1px black solid !important;
+  justify-items: center !important;
+  text-size-adjust: 12px;
+  margin: 0;
 }
 select:focus,
 input:focus,
@@ -131,18 +141,28 @@ button:active {
 .service-container {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
   margin-bottom: 3rem;
+  justify-content: center;
+  background-color: #F7ECE1;
 }
+
 .service-card {
-  width: 400px;
+  width: 560px;
   padding: 2rem;
   background-color: #FFF6EA;
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid black;
 }
 .wedding-form label {
   font-weight: bold;
-  color: #A18452;
+  color: black;
+  text-decoration: underline;
+  text-align: center;
+
 }
 .wedding-form input,
 .wedding-form select,
@@ -216,7 +236,7 @@ footer p {
   margin-top: 1rem;
 }
 .footer-links a {
-  color: #A18452;
+  color: black;
   margin: 0 1rem;
 }
 .footer-links a:hover {
@@ -298,4 +318,8 @@ footer p {
   font-size: 2.5em;
   color: white;
   font-weight: 900;
+}
+
+#details {
+  height: 100px;
 }

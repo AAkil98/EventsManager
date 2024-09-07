@@ -1,11 +1,12 @@
 class ServicesController < ApplicationController
+    skip_before_action :authenticate_user!
     def index
         @services = policy_scope(Service)
     end
 
     def show
-        authorize @event
         @service = Service.find(params[:id])
+        authorize @service
     end
 
     def new
