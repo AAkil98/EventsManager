@@ -145,8 +145,10 @@
     color: #623e2a !important;
 }
 
-.img-container{
+.video-container2{
     padding: 48px;
+    width: 25%;
+    height: auto;
 }
 
 
@@ -162,7 +164,7 @@
     justify-content: space-between;
     width: 100%;
     align-items: start;
-    img{
+    .video-container2{
         width: 500px;
         height: 450px;
     }

@@ -62,6 +62,11 @@ group :development do
   gem "web-console"
   gem "hotwire-livereload"
 
+
+  group :development do
+    gem 'hotwire-livereload'
+  end
+  
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
