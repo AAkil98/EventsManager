@@ -1,10 +1,8 @@
-
-
 <!-- home page for the users -->
 <% if current_user %>
   <!-- home page for the admin -->
   <% if current_user.admin?%>
-    <div class="admin-home-section">
+    <div class="admin-home-section" style="background-image: url('<%= asset_path 'bg.png' %>'); background-size: cover; background-position: center;">
       <div class="admin-home-item">
         <div class="admin-home-body">
           <h2 class="section-title">Admin Dashboard</h2>
@@ -20,12 +18,10 @@
     </div>
   <!-- homepage for the owners -->
   <% elsif current_user.owner? %>
-    <div class="owner-home-section">
+    <div class="owner-home-section" style="background-image: url('<%= asset_path 'bg.png' %>'); background-size: cover; background-position: center;">
       <div class="owner-home-item">
         <h2 class="section-title">Owner Dashboard</h2>
-        <p class="card-text">Manage Your Events</p>
         <div class="owner-home-body">
-          <p class="card-text">Create new events or update existing ones</p>
           <div class="owner-home-footer">
             <%= link_to 'Create an Event', new_event_path, class: "btn btn-primary"%>
             <%= link_to 'Update an existing Event', events_path, class: "btn btn-primary"%>

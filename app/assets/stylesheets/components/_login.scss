@@ -1,0 +1,154 @@
+$golden-color: #d4af37;
+$dark-color: #333;
+$light-background: #f9f9f9;
+$font-family: 'Playfair Display', serif; // Example of an elegant font, you can choose any.
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: $light-background;
+  padding: 2rem;
+}
+
+.login-form {
+  background-color: white;
+  border: 1px solid $golden-color;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: $font-family;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
+}
+
+
+.form-group {
+  margin-bottom: 1.5rem;
+
+  .checkbox-wrapper {
+    display: flex; /* Ensure checkbox and label are on the same line */
+    align-items: center;
+    justify-content: center; /* Align the checkbox and label vertically */
+  }
+
+  .form-input[type="checkbox"] {
+    width: 12px; /* Make the checkbox about 2mm wide */
+    height: 12px; /* Set equal width and height to make it circular */
+    appearance: none; /* Remove default checkbox styling */
+    border-radius: 50%; /* Make the checkbox circular */
+    border: 1px solid $golden-color; /* Add a border for visibility */
+    background-color: white; /* White background for the checkbox */
+    margin-right: 0.5rem; /* Space between the checkbox and the label */
+    cursor: pointer; /* Change cursor to pointer on hover */
+
+    &:checked {
+      background-color: $golden-color; /* Change color when checked */
+      border-color: $golden-color; /* Keep border color consistent */
+    }
+  }
+
+  label {
+    font-size: 1.5rem; /* Smaller label text */
+    color: $dark-color; /* Dark color for label */
+    margin: 0; /* Remove any extra margin */
+  }
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid $golden-color;
+  border-radius: 5px;
+  font-family: $font-family;
+  color: $dark-color;
+
+  @media (max-width: 480px) {
+    padding: 0.6rem;
+  }
+}
+
+.login-button {
+  width: 150px; /* Set a fixed width for the button (you can adjust this as needed) */
+  padding: 0.6rem;
+  background-color: $golden-color;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-family: $font-family;
+  cursor: pointer;
+  display: block; /* Ensure it takes up the space it needs */
+  margin: 0 auto;
+
+  &:hover {
+    background-color: darken($golden-color, 10%);
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.5rem; /* Smaller padding on mobile */
+  }
+}
+
+/* Design for Sign up and Forgot your password */
+.signup-link {
+  margin-top: 1.5rem;
+  font-family: $font-family;
+  font-size: 1.5rem;
+  text-align: center; /* Center the buttons horizontally */
+
+  a {
+    display: inline-block; /* Make them inline to stay on the same line */
+    padding: 0.6rem 1.5rem; /* Adjust padding for button-like appearance */
+    margin: 0 1rem; /* Space between the buttons */
+    font-size: 1.2rem;
+    font-family: $font-family;
+    border-radius: 5px;
+    text-decoration: none; /* Remove underline */
+    color: white; /* Text color for both buttons */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+
+    &:first-of-type {
+      background-color: $golden-color; /* First button background (gold) */
+      border: 1px solid darken($golden-color, 10%); /* Darker border for contrast */
+
+      &:hover {
+        background-color: darken($golden-color, 15%); /* Darken on hover */
+      }
+    }
+
+    &:last-of-type {
+      background-color: $dark-color; /* Second button background (dark color) */
+      border: 1px solid lighten($dark-color, 10%); /* Slightly lighter border */
+
+      &:hover {
+        background-color: lighten($dark-color, 10%); /* Lighten on hover */
+      }
+    }
+  }
+}
+
+
+/* Responsive styles for smaller screens */
+@media (max-width: 480px) {
+  .login-title {
+    font-size: 1.8rem;
+  }
+
+  .login-button {
+    padding: 0.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+}

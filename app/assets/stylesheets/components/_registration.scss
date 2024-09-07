@@ -1,0 +1,105 @@
+$golden-color: #d4af37;
+$dark-color: #333;
+$light-background: #f9f9f9;
+$font-family: 'Playfair Display', serif; // Example of an elegant font, you can choose any.
+
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: $light-background;
+  padding: 2rem;
+}
+
+.signup-form {
+  background-color: white;
+  border: 1px solid $golden-color;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: $font-family;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
+}
+
+.signup-title {
+  text-align: center;
+  color: $golden-color;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  font-family: $font-family;
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+  }
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid $golden-color;
+  border-radius: 5px;
+  font-family: $font-family;
+  color: $dark-color;
+
+  @media (max-width: 480px) {
+    padding: 0.6rem;
+  }
+}
+
+.form-radio {
+  display: flex;
+  justify-content: space-between;
+  label {
+    color: $dark-color;
+  }
+}
+
+.signup-button {
+  width: 150px; /* Set a fixed width for the button (you can adjust this as needed) */
+  padding: 0.6rem;
+  background-color: $golden-color;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-family: $font-family;
+  cursor: pointer;
+  display: block; /* Ensure it takes up the space it needs */
+  margin: 0 auto;
+
+  &:hover {
+    background-color: darken($golden-color, 10%);
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.6rem;
+  }
+}
+
+.login-link {
+  margin-top: 1.5rem;
+  text-align: center;
+
+  a {
+    color: $golden-color;
+    text-decoration: none;
+    font-family: $font-family;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
