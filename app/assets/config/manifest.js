@@ -1,11 +1,7 @@
-//= link application.css
-//= link application.js
-//= link bgig.png
+//= link_tree ../images
 //= link controllers/application.js
-//= link controllers/hello_controller.js
 //= link_tree ../../javascript/controllers
-//= link homesign.png
-//= link logo.png
-//= link bg-video.mp4
-//= link mod-video.mp4
-//= link Secimg.jpeg
+//= link_tree ../../javascript .js
+//= link_tree ../../../vendor/javascript .js
+//= link popper.js
+//= link bootstrap.min.js

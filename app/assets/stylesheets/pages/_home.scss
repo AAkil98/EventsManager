@@ -118,7 +118,9 @@
 
 .video-container {
     height: 90vh;
-    position: relative; /* Added for better positioning */
+    display: flex;
+    justify-content: center;
+     /* Added for better positioning */
     overflow: hidden; /* Ensures content doesn't overflow */
 }
 
@@ -141,14 +143,14 @@
 .modheel-text {
     margin-bottom: 0 !important;
     text-align: justify;
-    padding: 0 150px;
+    padding-right: 100px;
     color: #623e2a !important;
 }
 
 .video-container2{
     padding: 48px;
-    width: 25%;
-    height: auto;
+    width: 350px !important;
+    margin: 50px;
 }
 
 
@@ -162,10 +164,7 @@
 .card-corp{
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 25%;
     align-items: start;
-    .video-container2{
-        width: 500px;
-        height: 450px;
-    }
+    padding: 0 120px;
 }
