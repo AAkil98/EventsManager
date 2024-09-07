@@ -1,0 +1,97 @@
+.owner-home-section {
+  max-width: 500px;
+  margin: 50px auto 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.owner-home-body .section-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.owner-home-body .card-text {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.owner-home-footer{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-primary {
+  background-color: #3498db;
+  color:white;
+  padding: 10px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #2980b9;
+  }
+}
+
+.admin-home-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; // Full height to center the card vertically
+  background-color: #f7f7f7; // Light background for contrast
+}
+
+.admin-home-item {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  text-align: center;
+}
+
+.admin-home-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333333;
+}
+
+.card-text {
+  font-size: 16px;
+  color: #666666;
+  margin-bottom: 30px;
+}
+
+.admin-home-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; // Space between buttons
+}
+
+.btn-primary {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+}

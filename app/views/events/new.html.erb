@@ -1,0 +1,31 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-12 col-md-6 offset-lg-3">
+      <div class="bg-white rounded p-3 shadow">
+        <% if @event.errors.any? %>
+          <div class="alert alert-danger">
+            <h4>There were some errors:</h4>
+            <ul>
+              <% @event.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <h3>Create your own event</h3>
+        <%= simple_form_for @event do |f|%>
+          <%= f.input :title, placeholder: "Type the title of youe event"%>
+          <%= f.input :category, collection: [["Festival", "Festival"], ["Sports", "Sports"], ["Entertainment", "Entertainment"], ["Party", "Party"], ["Conference", "Conference"], ["Concert", "Concert"], ["Visit", "Visit"]], prompt: "Select", input_html: {class: 'form-control'} %>
+          <%= f.input :description, placeholder: 'Details'%>
+          <%= f.input :capacity, placeholder: '10'%>
+          <%= f.input :starting_day, placeholder: 'dd/mm/yyyy'%>
+          <%= f.input :ending_day, placeholder: 'dd/mm/yyyy'%>
+          <%= f.input :mode, collection: [['Public', 'Public'],['Private','Private']], prompt: "Select", input_html: {class: 'form-control'} %>
+          <%= f.input :photo, as: :file%>
+          <%= f.submit class: 'btn btn-flat'%>
+        <% end %>
+        <%= link_to "Back to dashboard", root_path, class: "btn btn-primary"%>
+      </div>
+    </div>
+  </div>
+</div>

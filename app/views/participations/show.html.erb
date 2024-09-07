@@ -1,0 +1,28 @@
+<div class="participation-card">
+  <div class="event-info">
+    <h1 class="event-title"><%=@event.title %></h1>
+    <p class="event-category"><%=@event.category %></p>
+    <p class="event-description"><%=@event.description %></p>
+    <p class="event-dates">
+      <span>From: <%=@event.starting_day.strftime("%B %d, %Y") %></span>
+      <span>To: <%=@event.ending_day.strftime("%B %d, %Y") %></span>
+    </p>
+    <h2><strong>Created by </strong> <%= @event.user.full_name%></h2>
+  </div>
+</div>
+
+<div class="participation-details">
+  <h2>Your Booking Details</h2>
+  <p class="participation-info"><%= @participation.status%></p>
+</div>
+
+<% if @participants%>
+  <h2>Participants</h2>
+  <ul>
+    <% @participants.each do |participant|%>
+      <li><%= participant.user.full_name %> email: <%= participant.email%></li>
+    <%end%>
+  </ul>
+<%end%>
+
+<%= link_to "Back to #{@event.title}", event_path(@event), class: "btn btn-back"%>

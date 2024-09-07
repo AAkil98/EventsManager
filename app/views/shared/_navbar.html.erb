@@ -18,20 +18,17 @@
         </ul>
       </div>
     </div>
-    
+
     <div class="navbar-center">
       <%= link_to "/", class: "navbar-brand" do %>
-        <%= image_tag "logo", class: "modheel-logo" %>
+        <%= image_tag "logo.png", class: "modheel-logo" %>
       <% end %>
     </div>
 
     <div class="navbar-right">
         <% if user_signed_in? %>
-        <li class="nav-item active">
-        <%= link_to "Panier", "#", class: "nav-link btn-primary" %>        
-        </li>
         <li class="nav-item ">
-          <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item btn-secondary" %>
+          <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link btn-signup" %>
        </li>
         <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -39,7 +36,6 @@
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <%= link_to "Action", "#", class: "dropdown-item" %>
             <%= link_to "Another action", "#", class: "dropdown-item" %>
-            
           </div>
         </li>
       <% else %>
